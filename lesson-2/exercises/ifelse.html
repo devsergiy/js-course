@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Условия if/else </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+  </head>
+ <body>
+<div class="container">
+<h2>Упражнение: условия if/else</h2>
+
+<h3 class="page-header">Какое из чисел больше?</h3>
+<ul>
+ <li>Напишите функцию <code>greaterNum</code> которая:
+   <ul>
+    <li>принимает 2 аргумента(числа).
+    <li>возвращает наибольшее число из полученных в аргументы.
+   </ul>
+ <li>Вызовите два раза с разными парами чисел, и выведите в консоль (например, "Наибольшее число между 5 и 10: 10.").
+</ul>
+<button class="btn" onclick="showSolution(1)">Посмотреть результат</button>
+<br><br>
+<pre id="solution1" style="display:none;">
+function greaterNum(num1, num2) {
+    if (num1 > num2) {
+        return num1;
+    } else {
+        return num2;
+    }
+}
+
+console.log(greaterNum(5, 10));
+</pre>
+
+
+<h3 class="page-header">Переводчик</h3>
+<ul>
+ <li>Напишите функцию <code>helloWorld</code> которая:
+   <ul>
+    <li>Принимает 1 аргумент, код языка (например "es", "de", "en")
+    <li>верните "Hello, World" для данного языка(хотябы три языка). По умолчанию возвращает русский вариант.
+   </ul>
+ <li>Вызовите эту функцию для каждого поддерживаемого языка и выведите в консоль результат.
+</ul>
+<button class="btn" onclick="showSolution(2)">Посмотреть результат</button>
+<br><br>
+<pre id="solution2" style="display:none;">
+function helloWorld(lang) {
+    if (lang == 'fr') {
+        return 'Bonjour tout le monde';
+    } else if (lang == 'es') {
+        return 'Hola, Mundo';
+    } else {
+        return 'Hello, World';
+    }
+}
+
+console.log(helloWorld('en'));
+console.log(helloWorld('fr'));
+console.log(helloWorld('es'));
+</pre>
+
+<h3 class="page-header">Постановщик оценок</h3>
+<ul>
+ <li>Напишите функцию<code>assignGrade</code> которая:
+   <ul>
+    <li>принимает один аргумент, значение успеваемости от 1 до 100.
+    <li>возвращает, или "5", "4", "3", "2", or "1".
+   </ul>
+ <li>Вызовите функцию с несколькими успеваемостями и выведите в консоль.
+</ul>
+<button class="btn" onclick="showSolution(3)">Посмотреть результат</button>
+<pre id="solution3" style="display:none;">
+function assignGrade(score) {
+    if (score &gt; 90) {
+        return '5';
+    } else if (score &gt; 80) {
+        return '4';
+    } else if (score &gt; 70) {
+        return '3';
+    } else if (score &gt; 65) {
+        return '2';
+    } else {
+        return '1';
+    }
+}
+
+console.log('Вы получили ' + assignGrade(95));
+console.log('Вы получили' + assignGrade(65));
+</pre>
+
+
+<script>
+
+function showSolution(num) {
+  if (confirm('Точно?')) {
+    document.getElementById('solution' + num).style.display = 'block';
+  }
+}
+  </script>
+  </body>
+</html>

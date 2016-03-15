@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript 1: for loops</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+  </head>
+ <body>
+<div class="container">
+<h2>Exercises: for loops</h2>
+
+
+<h3 class="page-header">Генератор четных - нечетных чисел</h3>
+<p>Создайте цикл, который будет случайным образом генерировать числа от 0 до 20. Для каждого случая будет проверятся текущее число (четное или нечетное), и выводится результат на экран (например, 2 - четное).
+</p>
+<button class="btn" onclick="showSolution(1)">Результат</button>
+<br><br>
+<pre id="solution1" style="display:none;">
+for (var i = 0; i &lt;= 20; i++) {
+    if (i % 2 === 0) {
+        console.log(i + ' is even');
+    } else {
+        console.log(i + ' is odd');
+    }
+}
+</pre>
+
+
+<h3 class="page-header">Таблица умножения</h3>
+<p>Создайте цикл, который будет выполнятся от 0 до 10. Для каждого прохождеения цикла будет умножаться число на 9. Используйте вложенный цикл, чтобы показать таблицы для каждого множителя от 1 до 10 (всего 100 результатов).
+</p>
+<p><b>Бонус:</b> Используйте вложенный цикл for, что бы показать таблицу для каждого множителя от 1 до 10 (всего 100 результатов).
+</p>
+
+<button class="btn" onclick="showSolution(2)">Рузальтат</button>
+<br><br>
+<pre id="solution2" style="display:none;">
+// Multiplication tables
+var multiplier = 9;
+for (var i = 0; i &lt;= 10; i++) {
+    var result = multiplier * i;
+    console.log(multiplier + ' * ' + i + ' = ' + result);
+}
+
+
+for (var multiplier = 0; multiplier &lt;= 10; multiplier++) {
+ for (var i = 0; i &lt;= 10; i++) {
+   var result = multiplier * i;
+   console.log(multiplier + ' * ' + i + ' = ' + result);
+ }
+}
+</pre>
+
+<h3 class="page-header">Оценка результатов</h3>
+
+<p>Проверьте результаты функции assignGrade из условных упражнений для каждого значения от 60 до 100.  
+То есть создайте цикл for от 60 до 100 и вызывайте в нем вашу функцию, например assignGrade(61)
+</p>
+<button class="btn" onclick="showSolution(3)">Результат</button>
+<pre id="solution3" style="display:none;">
+function assignGrade(score) {
+    if (score &gt; 90) {
+        return '5';
+    } else if (score &gt; 80) {
+        return '4';
+    } else if (score &gt; 70) {
+        return '3';
+    } else if (score &gt; 65) {
+        return '2';
+    } else {
+        return '1';
+    }
+}
+
+for (var i = 80; i &lt;= 100; i++) {
+  console.log('For ' + i + ', you got a ' + assignGrade(i));
+}
+</pre>
+
+  <br><br><br><br><br>
+  
+ </div>
+
+  <script>
+
+function showSolution(num) {
+  if (confirm('Вы уверены?')) {
+    document.getElementById('solution' + num).style.display = 'block';
+  }
+}
+  </script>
+  </body>
+</html>

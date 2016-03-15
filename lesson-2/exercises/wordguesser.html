@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Домашнее задание: Загадка</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+  </head>
+ <body>
+<div class="container">
+<h2>Домашнее задание: Загадка</h2>
+
+<p>Вы создадите простую игру где пользователь получает бесконечные попытки угадать слово (например "Зимой и летом одним цветом?", или "Днем с ногами — ночью без ног?").
+</p>
+<ul>
+  <li>Создайте два глобальных массива: один содержи буквы слова (например, 'Е', 'Л', 'К', 'А'), и второй содержит текущие угаданные буквы (например, в начале будет содержать - '_', '_', '_', '_' и в конце 'Е', 'Л', 'К', 'А').
+  <li>Напишите функцию <code>guessLetter</code> которая будет:
+    <ul>
+     <li>Принимать аргумент, угадываемая буква.
+     <li>Пребирайть буквы слова и проверять есть ли угадываемая буква в слове.
+     <li>Если буква совпадает, изменять массив с угаданными буквами и помещать букву правильную позицию.
+     <li>Когда завершится перебор вывести в консоль текущие угаданные буквы ('Е___')
+     <li>и поздравьте пользователя, если он угадал букву.
+     <li>Так же необходиол сообщить сколько осталось угадать букв,
+     <li>и если все буквы отгаданы, то поздравить пользователя с этим событием.
+    </ul>
+  <li>Представьте, что вы не знаете, слово, и вызовите <code>guessLetter</code> несколько раз с разными буквами для проверки работы фукнции.
+  <li><b>Бонус:</b> Сделайте игру похожей на "Колесо фортуны":
+    <ul>
+      <li>Начните с суммы вознаграждения в $0
+      <li>Вознаграждение увеличивается за угаданную буква. Увеличивается на случайную сумму от 10 до 50
+      <li>Случайная сумма может быть удвое, если буквы угадываются дважды к ряду
+      <li>Когда слово угадано сообщаем сумму вознаграждения
+    </ul>
+  <li><b>Бонус:</b> Сделайте игру похожей на "Палач":
+    <ul>
+      <li>Записывайте все буквы, которые пользователь пробывал и проверять пробовали ли букву. Если пробовалась, то ничего не делаем.
+      <li>Следите за состоянием палача, некое число (начинается с 0), и вычитаем или прибавляем к этому числу каждый раз когда угадывает или не угадывает букву.
+      <li>Как только состояние палача доходит до 6, сообщаем пользователю, что он проиграл и показываем ему палача в консоли
+    </ul>
+</ul>
+
+<button class="btn" onclick="showSolution(1)" style="display:n0ne;">Посмотреть результат</button>
+<br><br>
+<pre id="solution1" style="display:none;">
+var wordLetters     = ['Е', 'Л', 'К', 'А'];
+var guessedLetters  = ['_', '_', '_', '_'];
+
+function guessLetter(letter) {
+    var goodGuess = false;
+    var moreToGuess = false;
+    for (var i = 0; i &lt; wordLetters.length; i++) {
+        if (wordLetters[i] == letter) {
+            guessedLetters[i] = letter;
+            goodGuess = true;
+        }
+        if (guessedLetters[i] == '_') {
+            moreToGuess = true;
+        }
+    }
+    if (goodGuess) {
+        console.log('Да, ты угадал букву!');
+        console.log(guessedLetters.join(''));
+        if (!moreToGuess) {
+            console.log('Вы выиграли!');
+        } 
+    } else {
+        console.log('Нет, не верно!');
+    }
+}
+
+guessLetter('Е');
+guessLetter('Д');
+guessLetter('Л');
+guessLetter('К');
+guessLetter('А');
+</pre>
+
+
+  <br><br><br><br><br>
+  
+ </div>
+
+  <script>
+
+function showSolution(num) {
+  if (confirm('You surrrrre?')) {
+    document.getElementById('solution' + num).style.display = 'block';
+  }
+}
+  </script>
+  </body>
+</html>

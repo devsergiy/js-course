@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Функции упражнения</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+  </head>
+ <body>
+<div class="container">
+<h2>Функции</h2>
+
+ <h3 class="page-header">Калькулятор возраста</h3>
+
+ <ul>
+  <li>Написать функцию <code>calculateAge</code> которая:
+    <ul>
+     <li>принимает 2 аргумента: год рождения и текущий год.
+     <li>Считает два возможных значения возраста.
+     <li>И выводит их в следующем виде: "Ваш возраст NN или NN"
+    </ul>
+  <li>Вызвать функцию с двумя разными наборами данных
+  <li><b>Bonus</b>: Выяснить как можно получить текущий год не передавая его.
+ </ul>
+ <button  onclick="showSolution(2)" class="btn">See Solution</button>
+ <br><br>
+ <pre id="solution2" style="display:none;">
+function calculateAge(birthYear, currentYear) {
+    var age = currentYear - birthYear;
+    console.log('Ваш возраст ' + age + ' или ' + (age - 1));
+}
+
+calculateAge(1984, 2012);
+calculateAge(1988, 2012);
+calculateAge(1982, 2012);</pre>
+
+
+
+ </div>
+
+  <script>
+
+function showSolution(num) {
+  if (confirm('Вы уверены?')) {
+    document.getElementById('solution' + num).style.display = 'block';
+  }
+}
+  </script>
+  </body>
+</html>
