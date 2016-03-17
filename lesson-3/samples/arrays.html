@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        /*Создание простого массива*/
+        var array1 = [1, "string"];
+        array1[0]  = 10;
+        array1[1]  = 11;
+
+        console.log(array1);
+
+
+        var array2 = [2, 10, 25];
+        console.log(array2[2]);
+
+        /*Выводим несуществующий елемент массива*/
+        console.log(array2[10]);
+
+        /*Максимальный елемент массива у нас с индексом 2. Присваиваем седьмому елементу значение.*/
+        array2[7] = 50;
+
+        console.log(array2);
+        console.log(array2[6]);
+
+
+        /*Перечисление значений массива*/
+        var array3 = ["string", 100, 500, "string2", [333, 4999]];
+
+        for (var index = 0; index <= array3.length; index++) {
+            console.log('Индекс: ' + index + " Значение: " + array3[index] + " Тип данных: " + typeof array3[index]);
+        }
+
+        /*Добавление елементов в массив динамически*/
+        array3.push('new_element');
+
+        console.log('Массив после добавления: ', array3);
+
+
+        /*Получение длины массива*/
+        console.log('array3 имеет длину ' +  array3.length);
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        //Внешняя (глобальная) переменная
+        var outerVariable = "Global Variable!\n";
+
+        //console.log('Глобальная переменная обьявленная в конце файла', outerVariable4);
+
+        //Пример самой простой функции
+        function myFisrtFunction () {
+            console.log( 'Моя первая функция сработала!\n' );
+        }
+
+        //Пример вызова функции
+        myFisrtFunction();
+
+        /*Пример функции которая имеет доступ в внешней переменной*/
+        function func2 () {
+            console.log( 'Мы имеем доступ к внешним переменным: ' + outerVariable + '\n' );
+        }
+        //Ее вызов
+        func2();
+
+        /*
+            Функция внутри которой обьявлена переменная с именем внешней.
+            В таком случае нам доступно значение только локальной переменной.
+        */
+        function func3 () {
+            var outerVariable = "Local Variable";
+            var innerVariable = 10;
+            console.log( 'Объявлена локальная переменная с именем внешней: ' + outerVariable );
+        }
+        func3();
+
+        try {
+            console.log('Попытка доступа к внутренней переменной функции: ' + innerVariable + '\n');
+        } catch (e) {
+            console.log(e)
+        }
+
+
+        /*
+        * Функция в которой обьявлен параметр с именем внешней переменной.
+        * В таком случае нам опять недоступна внешняя переменная
+        * */
+        function func4 ( outerVariable, secondParam, thirdParam ) {
+            console.log( 'Объявлен параметр функции с именем вннешней переменной: ' + outerVariable + ' ' + secondParam + ' ' + thirdParam + '\n' );
+        }
+
+        func4("первый", "второй");
+
+
+
+        /*Пример изменение внешней переменной двумя функциями*/
+        var outerVariable2 = 40;
+
+        function test1 () {
+            outerVariable2 += 10;
+        }
+
+        function test2 () {
+            outerVariable2 += 10;
+        }
+
+        test1();
+        test2();
+
+        console.log('Изменение внешней переменной двумя функциями: ' + outerVariable2);
+
+        /*Обьявление глобальной переменной внутри функции*/
+        try {
+            console.log('Попытка доступа к глобальной переменной : ' + outerVariable3);
+        } catch (e) {
+            console.log(e)
+        }
+
+        function globalCreator()
+        {
+            outerVariable3 = "New global variable!";
+        }
+        globalCreator();
+
+        console.log('Попытка доступа к глобальной переменной : ' + outerVariable3 + '\n');
+
+
+        /*Видимость переменных внутри функции*/
+        function testVariableScope()
+        {
+            var var1 = 10;
+
+            console.log('Локальная переменная обьявленная ниже', var2);
+
+            var var2 = 20;
+
+            console.log('Локальная переменная обьявленная ниже', var2 + '\n');
+
+        }
+
+        testVariableScope();
+
+
+        /*Пример функции которая возращает результат сложения ее двух параметров */
+        function calculate ( firstNum, secondNum ) {
+            return  true;
+        }
+
+        if ( calculate() != 0 ) {
+
+        }
+
+        var outSum = calculate( 10, 20 );
+        console.log( 'Результат возращенный функцией: ' + outSum + '\n' );
+
+        /*Функция которая ничего не возращает. Что означает что она возращает undefined*/
+        function undefReturn ( param1, param2 ) {
+            console.log( "Вызвана функция которая ничего не возращает" );
+        }
+
+        var result = undefReturn( 10, 20 );
+        console.log( "Результат функции которая ничего не возращает: " + result + '\n' );
+
+
+        /*Пример с функцией, исполнение которой прекращается после интрукции return */
+        function terminated () {
+            var var1 = 10,
+                var2 = 20;
+
+            var sum = var1 + var2;
+
+            return sum;
+
+            sum += 20;
+
+            return sum;
+
+        }
+
+        var result1 = terminated();
+        console.log( "Результат остановленной функци с помощью return: " + result1 + '\n' );
+
+        var a1 = 10;
+
+        /*Передача одной функции как параметр в другую функцию*/
+        function childFunc () {
+            console.log( 'Вызвана функция параметр.\n' );
+            console.log(a1)
+        }
+
+        function parentFunction ( param1 ) {
+            console.log( 'Вызвана функция родитель.' );
+            var a2 = 20;
+            return [a1, a2]
+        }
+
+
+        parentFunction(childFunc);
+
+        /*Второй способ передачи функции как параметра в другую функцию*/
+        parentFunction( function ddddd() {
+            console.log( 'Вызвана функция параметр переданная сразу\n' );
+        });
+
+        /*Рекурсия (вызов функции внутри себя) */
+        function recursiveFunction ( param1 ) {
+            if ( param1 < 4 ) {
+                recursiveFunction( param1 + 1 )
+            }
+        }
+
+        /*В консоли увидим что функция запустилась 4 раза*/
+        recursiveFunction(1);
+
+
+        var outerVariable4 = 4;
+
+        //console.log('Глобальная переменная обьявленная в конце файла', outerVariable4);
+
+    </script>
+</body>
+</html>
