@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Основы JS</title>
+    <meta name="description" content="Javascript Fundamentals Course">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../shared/css/reveal.css">
+    <link rel="stylesheet" href="../shared/css/theme/sky.css" id="theme">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../shared/lib/css/zenburn.css">
+    <style type="text/css">
+      h2 {text-transform: none !important}
+      h1, h2, h3, h4 { font-family: sans-serif !important }
+
+    </style>
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="../shared/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="../shared/lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+          <section>
+              <section>
+                <h1>JAVASCRIPT</h1>
+              </section>
+              <section>
+                <h3 style="text-transform: none;">Создание Javascript</h3>
+                <div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
+                    <ul>
+                        <li>Netscape, May, 1995 - LiveScript (позже назван JavaScript
+                            <span style="font-size: 36.018333435058594px;">);</span>
+                        </li>
+                        <li>Июнь, 1996 - JScript (JavaScript от Microsoft);</li>
+                        <li>Ноябрь, 1996 - EcmaScript</li>
+                    </ul>
+                </div>
+                <div style="position: absolute; width: 150px; height: 220px; z-index: 4; left: 799px; top: 85px; margin: 0px;" class="text-left absolute-element">
+                    <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/dmitrytselinko/images/59552/125px-BEich.jpg" style="width: 140.27645327147968px; height: 178.63867664337158px; max-height: none; max-width: none; margin: 0px; padding: 0px;">
+                    <div class="text-left">
+                        <font style="font-size: 24px;">Brendan Eich</font>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </section>
+
+            <section>
+                <h3 style="text-transform: none;">История стандартов EcmaScript</h3>
+                <ul>
+                    <li>EcmaScript (Ноябрь 1996)</li>
+                    <li>EcmaScript 3 (Декабрь 1999)</li>
+                    <li>EcmaScript 4 (заброшен в 2008)</li>
+                    <li>EcmaScript 5 (Декабрь 2008)</li>
+                    <li>EcmaScript 6 (Июнь 2015)</li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Hello Word</h2>
+            </section>
+            <section>
+                <iframe width="100%" height="300" src="http://jsfiddle.net/neyasut/ea65hxos/embedded/js,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+            </section>
+        </section>
+
+        <section>
+            <section>
+            <h3>Особенности парсера</h3>
+            </section>
+            <section>
+              <h4>Автоматическое добавление точек с запятой</h4>
+              <pre><code class="javascript"
+>(function(w) {
+    function my(options) {
+        var myArr = []
+
+        console.log('test')
+        (myArr || []).forEach(function(i) {})
+        return
+        {
+           attr: 'something'
+        }
+    }
+})(window)
+              </code></pre>
+              <div class="text-left" data-fragment-index="0">
+                <font style="font-size: 32px;">Как будет восприниматься парсером:</font>
+              </div>
+                <pre class="fragment" data-fragment-index="1"><code class="javascript"
+>(function(w) {
+    function my(options) {
+        var myArr = [];// (1) <- добавлена
+        // (2) Не добавлена, строка убирается
+        console.log('test')(myArr || []).forEach(function(i) {});
+        return;// (3) <- добавлена, закрывает return
+        // Код ниже никогда не выполнится
+        {
+           attr: 'something'
+        }; // (4) <- добавлена
+    }
+})(window)
+                </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <h2>Инструменты</h2>
+            <ul>
+              <li>Текстовый редактор</li>
+              <li>Браузер</li>
+              <li>Средства разработчика в браузере</li>
+          </ul>
+        </section>
+
+        <section>
+            <h2>Основы</h2>
+        </section>
+
+        <section>
+            <section>
+              <h2>Variables</h2>
+                <pre>
+                  <code  data-trim contenteditable style="word-wrap: break-word"  class="javascript">
+var localVar = 123,
+  anotherLocalVar = 345;
+  unexpectedGlobalVar = 567;
+/*
+ * Variables in JavaScript can consist letters, numbers and symbols $ and _
+ * Variables cannot be started with number
+ * Variable cannot have the same name, as any Javascript reserved word
+ *  - the list of reserved words
+ *http://developer.mozilla.org/docs/Web/JavaScript/Reference/Reserved_Words
+ */
+var MY_PI = 3.14, // constant, just our agreement
+    $123 = 123,  // correct
+    my-var = 123, // incorrect
+    3abc = 321, // incorrect
+    _ = 5; // correct
+                  </code>
+                </pre>
+            </section>
+        <section>
+        <h2>Reserved Words</h2>
+        <pre><code  data-trim contenteditable style="word-wrap: break-word"  class="javascript">
+break          delete         function       return         typeof
+case           do             if             switch         var
+catch          else           in             this           void
+continue       false          instanceof     throw          while
+debugger       finally        new            true           with
+default        for            null           try
+</code></pre>
+
+<div class="text-center">Additionally in ES5</div>
+        <pre><code  data-trim contenteditable style="word-wrap: break-word"  class="javascript">
+class     const     enum      export    extends   import    super
+        </code></pre>
+        <div class="text-center">Additionally in Strict Mode</div>
+        <pre><code  data-trim contenteditable style="word-wrap: break-word"  class="javascript">
+implements     let            private        public         yield
+interface      package        protected      static
+        </code></pre>
+        </section>
+        </section>
+        <section>
+          <h2 style="text-align: center;">String</h2>
+          <pre><code class="javascript"
+  >var newString = "My string",
+       alsoNewString = 'Another string',
+       usingConstructor = new String("Something else");//not recommended
+                  </code></pre>
+                  <pre><code class="javascript"
+>'Hello' + ' world' // => 'Hello world'
+'abc'.indexOf('b') // => 1
+'some sequence'.charAt(5) // => 's'
+'hello'.length // => 5
+'June,July,August'.split(',') // => ['June', 'July', 'August']
+'abcde'.slice(1,3) // => 'bc'
+'abcde'.slice(1, -1) // => 'bcd', !!!&lt;IE8
+'Hello world'.substr(1,4) // => 'ello'
+'HeLLo WoRld'.toLowerCase() // => 'hello world'
+'Hello world'.replace('l', 'g') // => "Heglo world"
+'Hello world'.replace(/l/g, 'g') // => "Heggo worgd"
+ String.fromCharCode(1072) // => 'a'
+'азбука'.charCodeAt(0) // => 1072
+'z' > 'a' // true
+                </code></pre>
+        </section>
+        <section>
+        <section>
+        <h2>Number</h2>
+        <div class="text-left">64-bit format, standart&nbsp;IEEE 754</div>
+        <pre><code class="javascript" style="max-height: none">
+var num = 123,
+    alsoANumber = new Number(567);// not recommended
+
+ 0xAA // 170 in hexadecimal
+ 010 // 8 in octal
+ 2e5 // 200000
+
+ 1/0 // Infinity
+ 1e1000 // Infinity
+ 'a' * 1 // NaN
+ isNaN('abc') // true
+ isFinite(123) // true if value is not NaN or Infinity
+
+ 123.45678.toFixed(2) // "123.46"
+ 0.1 + 0.2 // 0.30000000000000004
+ parseInt('010') // 8
+ parseInt('0x10') // 16
+ parseInt('010', 10) // 10
+        </code></pre>
+        <div class="text-left">
+        <br>
+        </div>
+        </section>
+        <section>
+            <h2>Модуль Math</h2>
+        <pre><code class="javascript" style="max-height: none"
+>Math.random() //0.1099012941122055 - random number between 0 and 1
+
+Math.ceil(3.1) // 4 - rounded upwards to the nearest integer
+Math.floor(3.99) // 3 - rounded downwards to the nearest integer
+Math.round(3.4) // 3 - rounds x to the nearest integer
+Math.round(3.5) // 4
+Math.abs(-2) // 2 - returns the absolute value of x
+Math.max(x,y,z) // returns the largest argument
+Math.min(x,y,z) // returns the smallest argument
+Math.sqrt(3) // The square root of 3
+Math.pow(2, 3) // 8 - returns the value of 2 to the power of 3
+
+Math.sin, Math.cos, Math.tan // Trigonometric functions
+
+Math.PI // 3.141592653589793 - Returns PI
+
+// and many other useful functions...</code></pre>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math">Math on MDN</a>
+        </section>
+        </section>
+        <section>
+            <h2>Boolean</h2>
+            <div class="text-left">Everything is true, except:</div>
+            <div class="text-left">
+                <ul>
+                    <li>0</li>
+                    <li>null</li>
+                    <li>""</li>
+                    <li>false</li>
+                    <li>undefined</li>
+                    <li>NaN</li>
+                </ul>
+            <pre><code class="javascript"
+  >if (new Boolean(false)) {
+      console.log('Hello');
+  }
+  // 'Hello'
+  Boolean("") // false - better
+  var a = null;
+  !!a // false
+            </code></pre>
+          </div>
+          <br>
+        </section>
+        <section>
+            <h2>Объекты</h2>
+          <pre><code class="javascript" style="max-height: none"
+>var obj = {},
+     anotherObj = new Object();
+obj.hello = world;
+obj['123'] = 345;
+
+obj.hello; // world
+obj['123']; // 345
+
+          </code></pre>
+          <pre><code class="javascript"
+>var obj = {a: 1},
+     anotherObj = obj;
+anotherObj.a = 3;
+obj.a; // 3
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Сравнение значений</h2>
+          <pre><code class="javascript"
+>0            ==   ""            // true
+0            ==   "0"           // true
+false        ==   "0"           // true
+false        ==   undefined     // false
+false        ==   null          // false
+null         ==   undefined     // true
+" \t\r\n"    ==   0             // true
+          </code></pre>
+          <pre class="fragment" data-fragment-index="0"><code class="javascript"
+>0            ===   ""            // false
+0            ===   "0"           // false
+false        ===   "0"           // false
+false        ===   undefined     // false
+false        ===   null          // false
+null         ===   undefined     // false
+" \t\r\n"    ===   0             // false
+          </code></pre>
+          <pre class="fragment" data-fragment-index="1"><code class="javascript"
+>{} === {};                   // false
+new String('foo') === 'foo'; // false
+new Number(10) === 10;       // false
+var foo = {};
+foo === foo;                 // true
+          </code></pre>
+        </section>
+
+        <section>
+            <section>
+              <h2>Обзор возможностей сlient-side JavaScript</h2>
+              <p class="text-left fragment">JavaScript позволяет:</p>
+              <ul>
+                <li class="fragment">Работать с DOM (создание/удаление элементов и изменение их свойств);</li>
+                <li class="fragment">Перехватывать действия пользователя(клики мышки, движение курсора, набор текста и др.);</li>
+                <li class="fragment">Показывать сообщения(alerts);</li>
+                <li class="fragment">Устанавливать cookies;</li>
+                <li class="fragment">Посылать http запросы;</li>
+              </ul>
+            </section>
+            <section>
+              <h3>JavaScript не может:</h3>
+              <p class="text-left"></p>
+                <ul>
+                  <li class="fragment">Не имеет прямого доступа к памяти и к файловой системе;</li>
+                  <li class="fragment">Нет доступа к соседним вкладкам, если они не были открыты нами;</li>
+                  <li class="fragment">Ограниченные возможности кросс-доменного доступа;</li>
+                </ul>
+            </section>
+        </section>
+          <section>
+          <h2>Способы использования js на клиентской стороне</h2>
+          <pre><code>
+&lt;!DOCTYPE HTML>
+&lt;html>
+    &lt;head>
+      &lt;meta charset='utf-8'/>
+    &lt;/head>
+    &lt;body>
+        &lt;img src="hello.png" onclick="alert('Hi')">
+        &lt;a href="ja­va­cript:void window.open('about:blank');">Open Window&lt;/a>
+        &lt;script src='http://code.jquery.com/jquery-latest.min.js'>&lt;/script>
+        &lt;script>alert('Hello world');&lt;/script>
+    &lt;/body>
+&lt;/html>
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>To be continued...</h1>
+        </section>
+      </div>
+    </div>
+
+
+    <script src="../shared/lib/js/head.min.js"></script>
+    <script src="../shared/js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '../shared/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../shared/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../shared/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../shared/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../shared/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../shared/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+  </body>
+</html>
+
