@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Занятие 4</title>
+
+		<meta name="description" content="Занятие 2: Условные операторы. Циклы. Функции">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../shared/css/reveal.css">
+		<link rel="stylesheet" href="../shared/css/theme/sky.css " id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../shared/lib/css/zenburn.css">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+		<style>
+			.reveal pre code {
+				padding: 20px;
+				font-size: 25px;
+			}
+			div, p, h1, h2, h3 {
+				font-family: 'Open Sans' !important;
+			}
+		</style>
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../shared/css/print/pdf.css' : '../shared/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>JS gateway part 4</h1>
+				</section>
+				<section>
+					<section>
+						<h2>План</h2>
+						<ul>
+							<li>Работа с ветками в Git</li>
+							<li>Приведение типов</li>
+							<li>Работа со строками через регулярные выражения</li>
+							<li>Обработка исключительных ситуаций. Try/Catch</li>
+							<li>Debug (debugger/точки остановки)</li>
+							<li>setTimeout/setInterval</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Работа с ветками в Git</h3>
+					</section>
+
+					<section>
+						<h4>Команды для работы с ветками</h4>
+						<table>
+							<tr>
+								<th>Команда</th>
+								<th>Назначение</th>
+							</tr>
+							<tr>
+								<td>Branch</td>
+								<td>создать ветку или изменить ее свойства</td>
+							</tr>
+							<tr>
+								<td>Checkout</td>
+								<td>Переключиться на ветку</td>
+							</tr>
+							<tr>
+								<td>Checkout -b</td>
+								<td>переключиться на ветку с созданием ветки. Равносильно последовательным командам git branch, git checkout</td>
+							</tr>
+							<tr>
+								<td>Add</td>
+								<td>пометить файлы для последующего сохранения</td>
+							</tr>
+							<tr>
+								<td>Commit</td>
+								<td>сохранить изменения</td>
+							</tr>
+						</table>
+					</section>
+
+
+					<section>
+						<h4>Дополнительное чтение</h4>
+						<a href="https://git-scm.com/book/ru/v2">Scott Chacon and Ben Straub "Pro Git"</a>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Приведение типов</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Работа со строками через регулярные выражения</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Обработка исключительных ситуаций. Try/Catch</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Debug (debugger/точки остановки)</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>setTimeout/setInterval</h3>
+					</section>
+				</section>
+
+				<section>
+					<h4>Домашнее задание</h4>
+
+					<p></p>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="../shared/lib/js/head.min.js"></script>
+		<script src="../shared/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../shared/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../shared/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../shared/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../shared/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../shared/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../shared/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
