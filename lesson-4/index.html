@@ -271,6 +271,212 @@ console.log(a === b); // true
 					<section>
 						<h3>Работа со строками через регулярные выражения</h3>
 					</section>
+
+					<section>
+						<h3>Регулярные выражения</h3>
+
+						<p>Регулярные выражения — формальный язык поиска и осуществления манипуляций с подстроками в тексте, основанный на использовании метасимволов.</p>
+						<p>Для поиска используется строка-образец (pattern/шаблон/маска), состоящая из символов и метасимволов и задающая правило поиска.</p>
+					</section>
+
+					<section>
+						<h3>Классы символов</h3>
+
+						<table>
+							<tbody>
+								<tr>
+									<th>Символ</th>
+									<th>Соответствие</th>
+								</tr>
+								<tr>
+									<td>\d</td>
+									<td>Цифровой символ</td>
+								</tr>
+								<tr>
+									<td>\D</td>
+									<td>Нецифровой символ</td>
+								</tr>
+								<tr>
+									<td>\s</td>
+									<td>Пробельный символ</td>
+								</tr>
+								<tr>
+									<td>\S</td>
+									<td>Непробельный символ</td>
+								</tr>
+								<tr>
+									<td>\w</td>
+									<td>Буквенный или цифровой символ или знак подчёркивания</td>
+								</tr>
+								<tr>
+									<td>\W</td>
+									<td>Любой символ, кроме буквенного или цифрового символа или знака подчёркивания</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h3>Модификаторы позиции</h3>
+						<table>
+							<tbody>
+								<tr>
+									<th></th>
+									<th>Позиция</th>
+									<th>Пример</th>
+								</tr>
+								<tr>
+									<td><code>^</code></td>
+									<td>Начало текста (или строки)</td>
+									<td><code>^a</code></td>
+								</tr>
+								<tr>
+									<td><code>$</code></td>
+									<td>Конец текста (или строки)</td>
+									<td><code>a$</code></td>
+								</tr>
+								<tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h3>Квантификаторы</h3>
+						<table>
+							<tbody>
+								<tr>
+									<th></th>
+									<th>Число повторений</th>
+									<th>Пример</th>
+									<th>Соответствие</th>
+								</tr>
+								<tr>
+									<td><code>{<em>n</em>}</code></td>
+									<td>Ровно <em>n</em> раз</td>
+									<td><code>colou{3}r</code></td>
+									<td><code>colouuur</code></td>
+								</tr>
+								<tr>
+									<td><code>{<em>m</em>,<em>n</em>}</code></td>
+									<td>От <em>m</em> до <em>n</em> включительно</td>
+									<td><code>colou{2,4}r</code></td>
+									<td><code>colouur</code>, <code>colouuur</code>, <code>colouuuur</code></td>
+								</tr>
+								<tr>
+									<td><code>{<em>m</em>,}</code></td>
+									<td>Не менее <em>m</em></td>
+									<td><code>colou{2,}r</code></td>
+									<td><code>colouur</code>, <code>colouuur</code>, <code>colouuuur</code> и т. д.</td>
+								</tr>
+								<tr>
+									<td><code>{,<em>n</em>}</code></td>
+									<td>Не более <em>n</em></td>
+									<td><code>colou{,3}r</code></td>
+									<td><code>color</code>, <code>colour</code>, <code>colouur</code>, <code>colouuur</code></td>
+								</tr>
+								<tr>
+									<td><code>?</code></td>
+									<td>Ноль или одно</td>
+									<td><code>{0,1}</code></td>
+									<td><code>colou?r</code></td>
+									<td><code>color</code>, <code>colour</code></td>
+								</tr>
+								<tr>
+									<td><code>*</code></td>
+									<td>Ноль или более</td>
+									<td><code>{0,}</code></td>
+									<td><code>colou*r</code></td>
+									<td><code>color</code>, <code>colour</code>, <code>colouur</code> и т. д.</td>
+								</tr>
+								<tr>
+									<td><code>+</code></td>
+									<td>Одно или более</td>
+									<td><code>{1,}</code></td>
+									<td><code>colou+r</code></td>
+									<td><code>colour</code>, <code>colouur</code> и т. д. (но не <code>color</code>)</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h3>Квантификаторы</h3>
+						<table>
+							<tbody>
+								<tr>
+									<th></th>
+									<th>Число повторений</th>
+									<th>Пример</th>
+									<th>Соответствие</th>
+								</tr>
+								<tr>
+									<td><code>?</code></td>
+									<td>Ноль или одно</td>
+									<td><code>colou?r</code></td>
+									<td><code>color</code>, <code>colour</code></td>
+								</tr>
+								<tr>
+									<td><code>*</code></td>
+									<td>Ноль или более</td>
+									<td><code>colou*r</code></td>
+									<td><code>color</code>, <code>colour</code>, <code>colouur</code> и т. д.</td>
+								</tr>
+								<tr>
+									<td><code>+</code></td>
+									<td>Одно или более</td>
+									<td><code>colou+r</code></td>
+									<td><code>colour</code>, <code>colouur</code> и т. д. (но не <code>color</code>)</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h3>Методы строк работающие с регулярными выражениями</h3>
+						<table>
+							<tbody>
+								<tr>
+									<th>Метод</th>
+									<th>Пример</th>
+								</tr>
+								<tr>
+									<td>str.search(reg)</td>
+									<td>str.search( /onlyfirst/ )</td>
+								</tr>
+								<tr>
+									<td>str.match(reg)</td>
+									<td>
+										str.match( /ignorecasefindall/ig );
+										str.match( /onlyfirst/ );
+									</td>
+								</tr>
+								<tr>
+									<td>str.split(reg|substr, limit)</td>
+									<td>str.split(/a/)</td>
+								</tr>
+								<tr>
+									<td>str.replace(reg)</td>
+									<td>
+										str.replace(/ignorecasefindall/ig);
+										str.replace(/onlyfirst/);
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Более подробно:</h4>
+
+						<ul>
+							<li>
+								<a href="https://learn.javascript.ru/regular-expressions-javascript">Регулярные выражения (learn.javascript.ru)</a>
+							</li>
+							<li>
+								<a href="https://learn.javascript.ru/regexp-specials">Особенности регулярных выражений в Javascript (learn.javascript.ru)</a>
+							</li>
+						</ul>
+					</section>
 				</section>
 
 				<section>
@@ -294,7 +500,9 @@ console.log(a === b); // true
 				<section>
 					<h4>Домашнее задание</h4>
 
-					<p></p>
+					<ul>
+						<li><a href="https://github.com/spetrunin/js-course-exercises/blob/master/lesson3/task.md">Arrays</a></li>
+					</ul>
 				</section>
 			</div>
 
