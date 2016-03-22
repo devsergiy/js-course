@@ -106,7 +106,7 @@
 						<h4>Дополнительное чтение</h4>
 
 						<ul>
-						<li><a href="http://bi0morph.github.io/hello-world/">Github Hello Word (Russian)</a></li>
+							<li><a href="http://bi0morph.github.io/hello-world/">Github Hello Word (Russian)</a></li>
 							<li><a href="https://guides.github.com/">Гитхаб гайды (ENG)</a></li>
 							<li><a href="https://git-scm.com/book/ru/v2">Scott Chacon and Ben Straub "Pro Git" (Russian)</a></li>
 						</ul>
@@ -261,8 +261,8 @@ console.log(a === b); // true
 
 					<section>
 						<h4>Более подробно:</h4>
-						<a href="https://learn.javascript.ru/types-conversion">Преобразование типов (learn.javascript.ru)</a>
-						<a href="http://www.w3schools.com/js/js_type_conversion.asp">Conversions. Type conversion table (w3schools.com)</a>
+						<a href="https://learn.javascript.ru/types-conversion">Преобразование типов</a>
+						<a href="http://www.w3schools.com/js/js_type_conversion.asp">Conversions. Type conversion table</a>
 					</section>
 
 				</section>
@@ -470,10 +470,10 @@ console.log(a === b); // true
 
 						<ul>
 							<li>
-								<a href="https://learn.javascript.ru/regular-expressions-javascript">Регулярные выражения (learn.javascript.ru)</a>
+								<a href="https://learn.javascript.ru/regular-expressions-javascript">Регулярные выражения</a>
 							</li>
 							<li>
-								<a href="https://learn.javascript.ru/regexp-specials">Особенности регулярных выражений в Javascript (learn.javascript.ru)</a>
+								<a href="https://learn.javascript.ru/regexp-specials">Особенности регулярных выражений в Javascript</a>
 							</li>
 						</ul>
 					</section>
@@ -483,11 +483,86 @@ console.log(a === b); // true
 					<section>
 						<h3>Обработка исключительных ситуаций. Try/Catch</h3>
 					</section>
+					<section>
+						<h3>Конструкция try…catch</h3>
+						<pre><code>
+try {
+  // код
+} catch (err) {
+  // обработка ошибки
+}
+						</code></pre>
+					</section>
+					<section>
+						<h3>Конструкция try…catch</h3>
+						<pre><code>
+try {
+  console.log('before error')
+  undefinedVariable;
+  console.log('after error');
+} catch(e) {
+  console.log(typeof e);
+  console.log('Ошибка ' + e.name + ":" + e.message + "\n");
+  console.log(e.stack);
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Оператор throw</h3>
+						<p>Оператор throw генерирует ошибку.</p>
+						<pre><code>
+throw { name: 'MyError', message: "I'm here" }
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Оператор throw</h3>
+						<pre><code>
+try {
+  throw { name: 'MyError', message: "I'm here" }
+} catch(e) {
+  console.log('Ошибка ' + e.name + ":" + e.message);
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Конструкция try…catch…finally</h3>
+						<pre><code>
+try {
+  throw { name: 'MyError', message: "I'm here" }
+} catch(e) {
+  console.log('Ошибка ' + e.name + ":" + e.message);
+} finally {
+  console.log("I'm always here");
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Домашнее чтение:</h4>
+
+						<a href="https://learn.javascript.ru/exception">Перехват ошибок</a>
+					</section>
 				</section>
 
 				<section>
 					<section>
-						<h3>Debug (debugger/точки остановки)</h3>
+						<h3>Debug/Отладка</h3>
+					</section>
+					<section>
+						<h4>Команда debugger</h4>
+						<p>Поддерживается в chrome и firefox. Останавливает выполнение в месте вызова</p>
+						<pre><code>
+if (true) {
+  debugger;
+}
+						</code></pre>
+					</section>
+					<section>
+						<h3>Breakpoints</h3>
+						<img src="https://learn.javascript.ru/article/debugging-chrome/chrome_sources_breakpoint.png" alt="">
 					</section>
 				</section>
 
@@ -495,13 +570,74 @@ console.log(a === b); // true
 					<section>
 						<h3>setTimeout/setInterval</h3>
 					</section>
+					<section>
+						<h3>setTimeout</h3>
+						<p>Выполняет функцию через заданный промежуток времени</p>
+						<pre><code>
+var tmID = setTimeout(function(){
+  console.log("Hello");
+}, 3000);
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>clearTimeout</h3>
+						<p>Отменяет выполнение функции через таймаут</p>
+						<pre><code>
+var tmID = setTimeout(function(){
+  console.log("Hello");
+}, 3000);
+clearTimeout(tmID);
+						</code></pre>
+					</section>
+					<section>
+						<h3>setInterval</h3>
+						<p>Выполняет функцию через с периодичностью примерно заданному интервалу</p>
+						<pre><code>
+var itID = setInterval(function(){
+  console.log("Hello");
+}, 500);
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>clearTimeout</h3>
+						<p>Отменяет выполнение функции через таймаут</p>
+						<pre><code>
+var itID = setInterval(function(){
+  console.log("Hello");
+}, 500);
+var tm = setTimeout(function(){
+  clearInterval(itID);
+}, 600);
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Домашнее чтение:</h4>
+
+						<a href="https://learn.javascript.ru/settimeout-setinterval">setTimeout и setInterval</a>
+					</section>
 				</section>
 
 				<section>
 					<h4>Домашнее задание</h4>
 
+					<p>Задания:</p>
 					<ul>
 						<li><a href="https://github.com/spetrunin/js-course-exercises/blob/master/lesson3/task.md">Arrays</a></li>
+					</ul>
+
+					<p>Чтение:</p>
+					<ul>
+						<li><a href="https://learn.javascript.ru/types-conversion">Преобразование типов</a></li>
+						<li><a href="http://www.w3schools.com/js/js_type_conversion.asp">Conversions. Type conversion table</a></li>
+						<li><a href="http://bi0morph.github.io/hello-world/">Github Hello Word (Russian)</a></li>
+						<li><a href="https://learn.javascript.ru/regular-expressions-javascript">Регулярные выражения</a></li>
+						<li><a href="https://learn.javascript.ru/regexp-specials">Особенности регулярных выражений в Javascript</a></li>
+						<li><a href="https://learn.javascript.ru/exception">Перехват ошибок</a></li>
+						<li><a href="https://learn.javascript.ru/exception">Перехват ошибок</a></li>
+						<li><a href="https://learn.javascript.ru/settimeout-setinterval">setTimeout и setInterval</a></li>
 					</ul>
 				</section>
 			</div>
