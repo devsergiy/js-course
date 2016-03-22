@@ -1,42 +1,42 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+	<meta charset="utf-8">
 
-		<title>Занятие 4</title>
+	<title>Занятие 4</title>
 
-		<meta name="description" content="Занятие 2: Условные операторы. Циклы. Функции">
+	<meta name="description" content="Занятие 2: Условные операторы. Циклы. Функции">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="../shared/css/reveal.css">
-		<link rel="stylesheet" href="../shared/css/theme/sky.css " id="theme">
+	<link rel="stylesheet" href="../shared/css/reveal.css">
+	<link rel="stylesheet" href="../shared/css/theme/sky.css " id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="../shared/lib/css/zenburn.css">
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="../shared/lib/css/zenburn.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
-		<style>
-			.reveal pre code {
-				padding: 20px;
-				font-size: 25px;
-			}
-			div, p, h1, h2, h3 {
-				font-family: 'Open Sans' !important;
-			}
-		</style>
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? '../shared/css/print/pdf.css' : '../shared/css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+	<style>
+		.reveal pre code {
+			padding: 20px;
+			font-size: 25px;
+		}
+		div, p, h1, h2, h3, h4, h5, h6 {
+			font-family: 'Open Sans' !important;
+		}
+	</style>
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? '../shared/css/print/pdf.css' : '../shared/css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -104,141 +104,166 @@
 
 					<section>
 						<h4>Дополнительное чтение</h4>
-						<a href="https://git-scm.com/book/ru/v2">Scott Chacon and Ben Straub "Pro Git"</a>
+
+						<ul>
+						<li><a href="http://bi0morph.github.io/hello-world/">Github Hello Word (Russian)</a></li>
+							<li><a href="https://guides.github.com/">Гитхаб гайды (ENG)</a></li>
+							<li><a href="https://git-scm.com/book/ru/v2">Scott Chacon and Ben Straub "Pro Git" (Russian)</a></li>
+						</ul>
 					</section>
 				</section>
 
 				<section>
 					<section>
 						<h3>Приведение типов</h3>
-            <span>
-              <p>Мы рассмотрим преобразование только примитивных значений.</p>
-              <p></p>
-              <p>Всего есть три преобразования:</p>
-              <ul>
-                <li>Строковое преобразование.</li>
-                <li>Числовое преобразование.</li>
-                <li>Преобразование к логическому значению.</li>
-              </ul>
-            </span>
+						<p>Возможные преобразования примитивных типов:</p>
+						<ul>
+							<li>В строку.</li>
+							<li>В число.</li>
+							<li>В логическое значение.</li>
+						</ul>
 					</section>
 
-          <section>
-            <h4>Зачастую преобразования используются при нестогом сравнении:</h4>
-            <ul>
-              <li>Равно. Для сравнения используется два символа равенства '='.</li>
-              <li>Не равно. Знак равенства с восклицательным знаком перед ним !=.</li>
-            <ul>
-            <pre><code>
-              var foo = 'bar';
-              if (foo == true) {
-                console.log('foo is true');
-              }
-              if (foo != 0) {
-                console.log('foo is not 0');
-              }
-            </code></pre>
-          </section>
-          <section>
-            <h5>Строковое преобразование</h5>
-            <p>Строковое преобразование происходит, когда требуется представление чего-либо в виде строки.</p>
-            <pre><code>
-              var a = true;
-              alert( a ); // "true"
-            </code></pre>
+					<section>
+						<h4>Зачастую преобразования происходят при нестрогом сравнении:</h4>
+						<ul>
+							<li>Равно: Для сравнения используется два символа равенства '='.</li>
+							<li>Не равно: Знак равенства с восклицательным знаком перед ним !=.</li>
+						</ul>
+						<pre><code>
+var foo = 'bar';
+if (foo == true) {
+  console.log('foo is true');
+}
+if (foo != 0) {
+  console.log('foo is not 0');
+}
+						</code></pre>
+					</section>
+					<section>
+						<h5>Преобразование в строку</h5>
+						<p>Происходит, когда требуется представление чего-либо в виде строки.</p>
+						<pre><code>
+var a = true;
+alert( a ); // "true"
+						</code></pre>
 
-            <p>Можно также осуществить преобразование явным вызовом String(val):</p>
-            <pre><code>
-              console.info( String(null) === "null" );
-              // true
-            </code></pre>
-          </section>
-          <section>
-            Как видно из примеров выше, преобразование происходит наиболее очевидным способом, «как есть»: false становится "false", null – "null", undefined – "undefined" и т.п.
+						<p>Можно также осуществить преобразование явным вызовом String(val):</p>
+						<pre><code>
+console.log( String(null) === "null" );
+// true
+						</code></pre>
+					</section>
+					<section>
+						<h5>Преобразование в строку</h5>
+						<p>Преобразование происходит наиболее очевидным способом, «как есть»: false становится "false", null – "null", undefined – "undefined" и т.п.</p>
+					</section>
 
-            <p>Также для явного преобразования применяется оператор "+", у которого один из аргументов строка. В этом случае он приводит к строке и другой аргумент, например:</p>
-            <pre><code>
-              console.log( true + "test" );
-              // "truetest"
-              console.log( "123" + undefined );
-              // "123undefined"
-            </code></pre>
-          </section>
+					<section>
+						<h5>Преобразование в строку</h5>
 
-          <section>
-            <h5>Численное преобразование</h5>
-            <p>Численное преобразование происходит в математических функциях и выражениях, а также при сравнении данных различных типов (кроме сравнений ===, !==).</p>
-            <p>Для преобразования к числу в явном виде можно вызвать Number(val), либо, что короче, поставить перед выражением унарный плюс "+":</p>
-            <pre><code>
-              var a = +"123"; // 123
-              var a = Number("123"); // 123
-            </code></pre>
-          </section>
-          <section>
-            <table>
-              <tr>
-                <th>Значение</th>
-                <th>Преобразуется в</th>
-              </tr>
-              <tr>
-                <td>undefined</td>
-                <td>NaN</td>
-              </tr>
-              <tr>
-                <td>null</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>true / false</td>
-                <td>1 / 0</td>
-              </tr>
-              <tr>
-                <td>Строка</td>
-                <td>Пробельные символы по краям обрезаются. Далее, если остаётся пустая строка, то 0, иначе из непустой строки "считывается" число, при ошибке результат NaN.</td>
-              </tr>
-            </table>
-          </section>
+						<p>Для явного преобразования применяется оператор <b>"+"</b>, у которого один из аргументов строка. В этом случае он приводит к строке и второй аргумент, например:</p>
+						<pre><code>
+console.log( true + "test" );
+// "truetest"
+console.log( "123" + undefined );
+// "123undefined"
+						</code></pre>
+					</section>
 
-          <section>
-            <h5>Логическое преобразование</h5>
-            <p>Преобразование к true/false происходит в логическом контексте, таком как if(value), и при применении логических операторов.</p>
-            <p>Все значения, которые интуитивно «пусты», становятся false. Их несколько: 0, пустая строка, null, undefined и NaN.</p>
-            <p>Остальное, в том числе и любые объекты – true.</p>
-          </section>
-          <section>
-            <p>Полная таблица преобразований:</p>
-            <table>
-              <tr>
-                <th>Значение</th>
-                <th>Преобразуется в</th>
-              </tr>
-              <tr>
-                <td>undefined, null</td>
-                <td>false</td>
-              </tr>
-              <tr>
-                <td>Числа</td>
-                <td>Все true, кроме 0, NaN -- false.</td>
-              </tr>
-              <tr>
-                <td>Строки</td>
-                <td>Все true, кроме пустой строки "" -- false</td>
-              </tr>
-              <tr>
-                <td>Объекты</td>
-                <td>Всегда true</td>
-              </tr>
-            </table>
-          </section>
+					<section>
+						<h5>Численное преобразование</h5>
+						<p>Происходит в математических функциях и выражениях, а также при сравнении данных различных типов (кроме сравнений ===, !==).</p>
+					</section>
 
-          <section>
-            <h5>В JavaScript есть три преобразования:</h5>
-            <ol>
-              <li>Строковое: String(value) – в строковом контексте или при сложении со строкой. Работает очевидным образом.</li>
-              <li>Численное: Number(value) – в численном контексте, включая унарный плюс +value. Происходит при сравнении разных типов, кроме строгого равенства.</li>
-              <li>Логическое: Boolean(value) – в логическом контексте, можно также сделать двойным НЕ: !!value.</li>
-            </ol>
-          </section>
+					<section>
+						<h5>Численное преобразование</h5>
+						<p>Для преобразования к числу в явном виде можно вызвать Number(val) или поставить перед выражением унарный плюс "+":</p>
+						<pre><code>
+var a = +"123"; // 123
+var b = Number("123"); // 123
+console.log(a === b); // true
+						</code></pre>
+					</section>
+
+					<section>
+						<h5>Численное преобразование</h5>
+						<table>
+							<tr>
+								<th>Значение</th>
+								<th>Преобразуется в</th>
+							</tr>
+							<tr>
+								<td>undefined</td>
+								<td>NaN</td>
+							</tr>
+							<tr>
+								<td>null</td>
+								<td>0</td>
+							</tr>
+							<tr>
+								<td>true / false</td>
+								<td>1 / 0</td>
+							</tr>
+							<tr>
+								<td>Строка</td>
+								<td>Пробельные символы по краям обрезаются. Далее, если остаётся пустая строка, то 0, иначе из непустой строки "считывается" число, при ошибке результат NaN.</td>
+							</tr>
+						</table>
+					</section>
+
+					<section>
+						<h5>Логическое преобразование</h5>
+						<p>Преобразование к true/false происходит в логическом контексте, таком как if(value), и при применении логических операторов (&&, ||).</p>
+					</section>
+
+					<section>
+						<h5>Логическое преобразование</h5>
+						<p>Все значения, которые интуитивно «пусты», становятся false.</p>
+						<p>Их несколько: <b>0, пустая строка, null, undefined и NaN</b>.</p>
+						<p>Остальное, в том числе и любые объекты – <b>true</b>.</p>
+					</section>
+
+					<section>
+						<h5>Логическое преобразование</h5>
+						<table>
+							<tr>
+								<th>Значение</th>
+								<th>Преобразуется в</th>
+							</tr>
+							<tr>
+								<td>undefined, null</td>
+								<td>false</td>
+							</tr>
+							<tr>
+								<td>Числа</td>
+								<td>Все true, кроме 0, NaN -- false.</td>
+							</tr>
+							<tr>
+								<td>Строки</td>
+								<td>Все true, кроме пустой строки "" -- false</td>
+							</tr>
+							<tr>
+								<td>Объекты</td>
+								<td>Всегда true</td>
+							</tr>
+						</table>
+					</section>
+
+					<section>
+						<h4>Преобразования в Javascript:</h4>
+						<ol>
+							<li>Строковое: String(value) – в строковом контексте или при сложении со строкой.</li>
+							<li>Численное: Number(value) – в численном контексте, включая унарный плюс +value. Происходит при сравнении разных типов, кроме строгого равенства.</li>
+							<li>Логическое: Boolean(value) – в логическом контексте, можно также сделать двойным НЕ: !!value.</li>
+						</ol>
+					</section>
+
+					<section>
+						<h4>Более подробно:</h4>
+						<a href="https://learn.javascript.ru/types-conversion">Преобразование типов (learn.javascript.ru)</a>
+						<a href="http://www.w3schools.com/js/js_type_conversion.asp">Conversions. Type conversion table (w3schools.com)</a>
+					</section>
 
 				</section>
 
@@ -291,16 +316,16 @@
 
 				// Optional reveal.js plugins
 				dependencies: [
-					{ src: '../shared/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: '../shared/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../shared/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../shared/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: '../shared/plugin/zoom-js/zoom.js', async: true },
-					{ src: '../shared/plugin/notes/notes.js', async: true }
+				{ src: '../shared/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: '../shared/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: '../shared/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: '../shared/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: '../shared/plugin/zoom-js/zoom.js', async: true },
+				{ src: '../shared/plugin/notes/notes.js', async: true }
 				]
 			});
 
 		</script>
 
 	</body>
-</html>
+	</html>
