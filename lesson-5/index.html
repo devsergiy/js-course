@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Занятие 5</title>
+
+    <meta name="description" content="Занятие 2: Условные операторы. Циклы. Функции">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../shared/css/reveal.css">
+    <link rel="stylesheet" href="../shared/css/theme/sky.css " id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="../shared/lib/css/zenburn.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+    <style>
+        .reveal pre code {
+            padding: 20px;
+            font-size: 25px;
+            overflow: hidden;
+        }
+        div, p, h1, h2, h3, h4, h5, h6 {
+            font-family: 'Open Sans' !important;
+        }
+    </style>
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../shared/css/print/pdf.css' : '../shared/css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>JS gateway part 5</h1>
+                </section>
+                <section>
+                    <section>
+                        <h2>План</h2>
+                        <ul>
+                            <li>Повторение(Практика)</li>
+                            <li>Объекты</li>
+                            <li>Конструкторы</li>
+                            <li>ООП (Объектно ориентированное программирование)</li>
+                        </ul>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h3>Objects</h3>
+                    </section>
+
+                    <section>
+                        <h3>Objects as Hash</h3>
+                        <pre><code class="javascript">
+var obj = {},
+anotherObj = new Object();
+obj.hello = world;
+obj['123'] = 345;
+
+obj.hello; // world
+obj['123']; // 345
+
+delete obj.hello;
+
+for (var i in obj) {
+    if (obj.hasOwnProperty(i)) {
+        console.log(i);
+    }
+}
+
+'prop' in obj // false
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Objects as Hash</h3>
+                        <pre><code class="javascript">
+var obj = {a: 1},
+anotherObj = obj;
+anotherObj.a = 3;
+obj.a; // 3
+                        </code></pre>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h3>Constructors</h3>
+                    </section>
+
+                    <section>
+                        <h3>Constructors</h3>
+                        <pre><code class="javascript">
+function Foo() {
+  this.bla = 1;
+}
+var f = new Foo();
+
+f.test = function() {
+  console.log(this.bla);
+};
+
+f.test(); // 1
+Foo(); //undefined
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Prototype</h3>
+                        <pre><code class="javascript">
+function Foo() {
+  this.bla = 1;
+}
+Foo.prototype.test = function() {
+  console.log(this.bla);
+};
+
+var f = new Foo();
+f.test(); // 1
+Foo(); //undefined
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4>Constructors</h4>
+                        <pre><code class="javascript">
+// constructor
+var Gadget = function () {};
+// a static method
+Gadget.isShiny = function () {
+  return "you bet";
+};
+// a normal method added to the prototype
+Gadget.prototype.setPrice = function (price) {
+  this.price = price;
+};
+// calling a static method
+Gadget.isShiny(); // "you bet"
+// creating an instance and calling a method
+var iphone = new Gadget();
+iphone.setPrice(500);
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>this</h3>
+                        <pre><code class="javascript">
+var person = {
+    name: 'Василай',
+    talk: function() {
+        console.log('My name is ' + this.name);
+    }
+};
+person.talk();// 'My name is Василай'
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>this</h3>
+                        <pre data-fragment-index="0"><code class="javascript">
+var Person = function(name){
+    this.name = name;
+    this.talk = function() {
+        console.log('My name is ' + this.name);
+    };
+};
+person = new Person('Василай');
+
+person.talk();// 'My name is Василай'
+                        </code></pre>
+
+                        <pre class="fragment" data-fragment-index="1"><code class="javascript">
+var func = person.talk;
+func(); // 'My name is undefined'
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Способы создания объектов в JS</h2>
+                    </section>
+                    <section>
+                        <h3>Литерал</h3>
+                        <pre><code class="javascript">
+var literalObj = {};
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Конструктор Object()</h3>
+                        <pre><code class="javascript">
+var constructorObj1 = new Object({a: '3', b: '2'});
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Функция конструктор</h3>
+                        <pre><code class="javascript">
+function Point(x, y) {
+  this.x = x;
+  this.y = y;
+}
+Point.prototype.toString = function () {
+  return '(' + this.x + ',' + y + ')';
+};
+var myPoint = new Point();
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>ООП</h3>
+                    </section>
+                    <section>
+                        <h3>ООП</h3>
+                        <p><b>Общество охраны природы</b> — общественная экологическая организация с региональми отделениями в республиках, областях, городах, районных центрах, в учебных учреждениях и на предприятиях.</p>
+                    </section>
+                    <section>
+                        <h3>ООП</h3>
+                        <b>Организация освобождения Палестины </b> — политическая организация, претендующая на представление интересов арабов, живших на территории подмандатной Палестины до Арабо-израильской войны 1948 года, и их потомков.
+                    </section>
+                    <section>
+                        <h3>ООП</h3>
+                        <b>Объектно-ориентированное программирование</b> — методология программирования, основанная на представлении программы в виде совокупности объектов, каждый из которых является экземпляром определенного класса, а классы образуют иерархию наследования
+                    </section>
+
+                    <section>
+                        <h4>Основные принципы ООП</h4>
+                        <ul>
+                            <li>Инкапсуляция</li>
+                            <li>Наследование</li>
+                            <li>Полиморфизм</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Знаете вы принципы ооп?</h3>
+
+                        <p>Да конечно, это Инкапсуляция, Наследование, Полиморфизм</p>
+                    </section>
+
+                    <section>
+                        <h4>Термины из ООП</h4>
+                        <ul>
+                            <li>Инкапсуляция</li>
+                            <li>Наследование</li>
+                            <li>Полиморфизм</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h4>Термины из ООП</h4>
+                        <ul>
+                            <li>Класс</li>
+                            <li>Объект</li>
+                            <li>Свойство</li>
+                            <li>Метод</li>
+                            <li>Конструктор</li>
+                            <li>Интерфейс</li>
+                            <li>Абстрация</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <h4>Домашнее задание</h4>
+
+                    <ul>
+                        <li><a href="#">undefined</a></li>
+                    </ul>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="../shared/lib/js/head.min.js"></script>
+        <script src="../shared/js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+
+                transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                { src: '../shared/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: '../shared/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '../shared/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '../shared/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: '../shared/plugin/zoom-js/zoom.js', async: true },
+                { src: '../shared/plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+
+    </body>
+    </html>

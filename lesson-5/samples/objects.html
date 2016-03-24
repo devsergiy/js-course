@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        /*Создание объекта через конструктор*/
+        var object = new Object();
+
+        /*Литеральное создание объекта*/
+        var literalObject = {
+
+            variable1       : 10,
+            stringVariable2 : "stringVar",
+            funcVariable    : function () {
+                console.log('Я метод этого объекта');
+            }
+        };
+
+        /*Пример доступа к свойствам объекта*/
+        console.log('Свойство объекта: ' + literalObject.variable1);
+        console.log('Свойство объекта: ' + literalObject['variable1']);
+
+        /*Вызов метода объекта*/
+        literalObject.funcVariable();
+        literalObject['funcVariable']();
+
+        if (literalObject.hasOwnProperty('testObj')) {
+
+            /*проверка на наличие войства в объекте*/
+        }
+
+        /*Поиск несуществующего свойства*/
+        console.log('Попытка поиска несуществующего свойства: ' + literalObject['notDefinedField']);
+
+
+        /*Добавление свойств во время исполнения кода*/
+        literalObject.variable2 = "динамически_созданное_свойство";
+        literalObject['variable2'] = "динамически_созданное_свойство";
+        console.log(literalObject);
+
+
+        /*Пример реального объекта*/
+        var Animal = {
+            name        : 'Бобик',
+            isSleeping  : false,
+            walking     : false,
+            say         : function (  ) {
+                console.log("Гав, я " + this.name);
+            },
+            sleep       : function () {
+                if (this.isSleeping == false) {
+                    this.isSleeping = true;
+                    console.log('Уснул');
+                }
+            },
+            wakeUp      : function () {
+                if (this.isSleeping == true) {
+                    this.isSleeping = false;
+                    console.log('Проснулся');
+                }
+            },
+            walk        : function () {
+                this.wakeUp();
+                this.walking = true;
+                console.log('Пошел гулять');
+            },
+            isSleep     : function () {
+                return (this.isSleeping == true) ? " Спит" : 'Гуляет';
+            }
+        };
+
+
+        Animal.say();
+        Animal.name = "Гавчик";
+
+        Animal.walk();
+        Animal.sleep();
+        Animal.walk();
+
+
+
+        /*Пример перечисления свойств и их значений объектов*/
+        for (var field in Animal) {
+            console.log("Поле: " + field + " Значение: " + Animal[field]);
+        }
+
+
+        /*Пример удаления свойства объекта*/
+        delete Animal.name;
+        console.log('Имя после удаления: ' + Animal.name);
+
+
+        /*Пример передачи по ссылке значения переменных типа Объект. После изменения значения свойства в одном объекте  - оно изменяется и в другом.*/
+        var var1 = { field1 : 10 };
+        var var2 = {};
+
+        //var2.field1 = 20;
+        //console.log(var1);
+
+        /*КОпирование объектов*/
+        for (var field in Animal) {
+            var2[field] =  Animal[field];
+            //console.log("Поле: " + field + " Значение: " + Animal[field]);
+        }
+
+        function objRefExample(param1) {
+            param1.field1 = 20;
+        }
+
+        objRefExample(var1);
+
+        console.log(var1)
+
+
+
+
+
+
+        ///function
+
+    </script>
+</body>
+</html>
