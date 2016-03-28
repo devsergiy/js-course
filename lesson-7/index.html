@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Занятие 7</title>
+
+    <meta name="description" content="Занятие 7">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../shared/css/reveal.css">
+    <link rel="stylesheet" href="../shared/css/theme/sky.css " id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="../shared/lib/css/zenburn.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+    <style>
+        .reveal pre code {
+            padding: 20px;
+            font-size: 25px;
+            overflow: hidden;
+        }
+        div, p, h1, h2, h3, h4, h5, h6 {
+            font-family: 'Open Sans' !important;
+        }
+    </style>
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../shared/css/print/pdf.css' : '../shared/css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>JS gateway part 7</h1>
+                </section>
+                <section>
+                    <section>
+                        <h2>План</h2>
+                        <ul>
+                          <li>Замыкания в JavaScript</li>
+                          <li>Каррирование функций</li>
+                          <li>Context</li>
+                          <li>bind, apply, call</li>
+                        </ul>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h3>Замыкания в JavaScript</h3>
+                    </section>
+
+                    <section>
+                        <p>Замыкание — это функция, объявленная внутри другой функции и имеющая доступ к переменным внешней (вмещающей) функции.</p>
+                    </section>
+                    <section>
+                        <h3>Замыкание имеет доступ сразу к трем областям видимости:</h3>
+                        <ul>
+                            <li>собственная область видимости (переменные, объявленные внутри замыкания);</li>
+                            <li>область видимости внешней функции (переменные, объявленные внутри внешней функции);</li>
+                            <li>глобальная область видимости.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Пример замыкания в JavaScript:</h3>
+                        <pre><code class="javascript">
+function greet(firstName, lastName) { 
+  var greeting = 'Hello,';
+
+  function makeFullName() {
+     return greeting + ' ' + firstName + ' ' + lastName; 
+  }
+
+  return makeFullName(); 
+}
+
+greet('John', 'Doe'); // Hello, John Doe 
+                        </pre></code>
+                    </section>
+                    <section>
+                      <h3>Заключение</h3>
+                      <p>Замыкания позволяют реализовывать аналог приватных переменных, минимизировать выход переменных в глобальную область видимости.</p>
+                      <p>С другой стороны, неаккуратное использование замыканий может привести к побочным эффектам. Поэтому использовать их стоит крайне внимательно.</p>
+                      <a href='https://developer.mozilla.org/ru/docs/Web/JavaScript/Closures'>Подробнее</a>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h3>Каррирование</h3>
+                    </section>
+
+                    <section>
+                        <p>Карринг— этот термин описывает преобразование функции с несколькими аргументами в цепочку функций, каждая из которых имеет по одному аргументу.</p>
+                    </section>
+
+                    <section>
+                        <h3>Пример</h3>
+                        <pre><code class="javascript">
+function curryAdd(x) {
+  return function(y) {
+    return x + y;
+  }
+}
+
+curryAdd(2)(3) // 5
+                        </code></pre>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Context / Контекст</h2>
+                    </section>
+                    <section>
+                        <p>Итак, мы знаем, что <b>this</b> – это текущий объект при вызове «через точку» и новый объект при конструировании через new.</p>
+                        <p>Значение this устанавливается в зависимости от того, как вызвана функция:</p>
+                    </section>
+                    <section>
+                        <ul>
+                          <li>При вызове функции как метода:</li>
+                        </ul>
+                        <pre><code class="javascript">
+obj.func(...)    // this = obj
+                        </code></pre>
+                    </section>
+                    <section>
+                        <ul>
+                          <li>При обычном вызове:</li>
+                        </ul>
+                        <pre><code class="javascript">
+func(...) // this = window (ES3) /undefined (ES5)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <ul>
+                          <li>В new:</li>
+                        </ul>
+                        <pre><code class="javascript">
+new func() // this = {} (новый объект)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <ul>
+                          <li>Явное указание:</li>
+                        </ul>
+                        <pre><code class="javascript">
+func.apply(context, args) // this = context (явная передача)
+func.call(context, arg1, arg2, ...)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Методы для переопределения контекста:</h3>
+                        <ul>
+                          <li>call</li>
+                          <li>apply</li>
+                          <li>bind</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>call</h3>
+                        <p>Метод который вызывает ранее определенную функцию с другим контекстом.</p>
+                        <pre><code class='javascript'>
+func.call(context, arg1, arg2, ...)
+                        </code></pre>
+                        <p>Вызов func.call(context, a, b...) – то же, что обычный вызов func(a, b...), но с явно указанным this(=context).</p>
+                    </section>
+                    <section>
+                        <h3>appy</h3>
+                        <p><i>apply</i> работает аналогично <i>call</i>, но принимает массив аргументов вместо списка.</p>
+                        <pre><code class='javascript'>
+func.apply(context, [arg1, arg2]);
+                        </code></pre>
+                        <p>Вызов func.apply(context, [arg1, arg2]); – то же, что обычный вызов func(a, b...), но с явно указанным this(=context).</p>
+                    </section>
+                    <section>
+                        <h3>bind</h3>
+                        <p>Этот метод позволяет обернуть вызов функции с новым контекстом.</p>
+                        <pre><code class='javascript'>
+var wrapper = func.bind(context[, arg1, arg2...]);
+wrapper('arg');
+                        </code></pre>
+                        <p><i>bind</i> не вызывает функцию. Он только возвращает «обёртку», которую мы можем вызвать позже, и которая передаст вызов в исходную функцию, с привязанным контекстом.</p>
+                    </section>
+
+            </div>
+
+        </div>
+
+        <script src="../shared/lib/js/head.min.js"></script>
+        <script src="../shared/js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+
+                transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                { src: '../shared/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: '../shared/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '../shared/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '../shared/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: '../shared/plugin/zoom-js/zoom.js', async: true },
+                { src: '../shared/plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+
+    </body>
+    </html>
