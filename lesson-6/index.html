@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Занятие 6</title>
+
+    <meta name="description" content="Занятие 2: Условные операторы. Циклы. Функции">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../shared/css/reveal.css">
+    <link rel="stylesheet" href="../shared/css/theme/sky.css " id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="../shared/lib/css/zenburn.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+    <style>
+        .reveal pre code {
+            padding: 20px;
+            font-size: 25px;
+            overflow: hidden;
+        }
+        .reveal pre code.small {
+            font-size: 16px;
+            padding: 0px 20px;
+            line-height: 16px;
+        }
+        h4.no-transform {
+            text-transform: none;
+        }
+        div, p, h1, h2, h3, h4, h5, h6 {
+            font-family: 'Open Sans' !important;
+        }
+    </style>
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../shared/css/print/pdf.css' : '../shared/css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>JS gateway part 6</h1>
+                </section>
+                <section>
+                    <section>
+                        <h2>План</h2>
+                        <ul>
+                            <li>Повторение (ООП, конструкторы)</li>
+                            <li>Стандартные конструкторы в JavaScript</li>
+                            <li>Прототипы.</li>
+                            <li>Прототипное наследование</li>
+                            <li>Паттерны</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>ООП</h3>
+                    </section>
+
+                    <section>
+                        <h3>ООП</h3>
+                        <b>Объектно-ориентированное программирование</b> — методология программирования, основанная на представлении программы в виде совокупности объектов, каждый из которых является экземпляром определенного класса, а классы образуют иерархию наследования
+                    </section>
+
+                    <section>
+                        <h4>Термины</h4>
+                        <ul>
+                            <li>Класс</li>
+                            <li>Конструктор</li>
+                            <li>Объект</li>
+                            <li>Свойство</li>
+                            <li>Метод</li>
+                            <li>Интерфейс</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Конструктор</h3>
+                        <p>
+                            В ООП <b>конструктор класса</b> — специальный блок инструкций, вызываемый при создании объекта.
+                            Конструктор инициализирует объект, и может предоставить доступ к своей частной информации.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h4>Основные принципы ООП</h4>
+                        <ul>
+                            <li>Инкапсуляция - сокрытие реализации</li>
+                            <li>Наследование - наследование методов и свойств</li>
+                            <li>Полиморфизм - одинаковые методы, но разные реализации</li>
+                        </ul>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h3>Constructor</h3>
+                        <pre><code class="javascript">
+function Foo() {
+  this.bla = 1;
+}
+Foo.prototype.test = function() {
+  console.log(this.bla);
+};
+
+var f = new Foo();
+f.test(); // 1
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Стандартные конструкторы JS:</h3>
+                        <ul>
+                            <li>Object()</li>
+                            <li>Function()</li>
+                            <li>Boolean()</li>
+                            <li>String()</li>
+                            <li>RegExp()</li>
+                            <li>Number()</li>
+                            <li>Date()</li>
+                            <li>Array()</li>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects">и другие</a>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Стандартные Конструкторы</h3>
+                        <pre><code class="javascript">
+var myNumber = new Number(23);
+var myString = new String('male');
+var myBoolean = new Boolean(false);
+var myObject = new Object();
+var myArray = new Array('foo', 'bar');
+var myFunction = new Function("x", "y", "return x*y");
+var myDate = new Date();
+var myRegExp = new RegExp('\bt[a-z]+\b');
+var myError = new Error('Darn!');
+                        </code></pre>
+
+                        <div class="fragment">
+                            <p>Проверьте вывод в консоли для некоторых из них</p>
+                            <pre><code class="javascript">
+var myNumber = new Number(23);
+console.log(myNumber);
+                            </code></pre>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>Время практики</h3>
+                        <p>Создайте несколько объектов конструкторами Object(), String(), Array(). Проверьте typeof и свойство contructor</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Прототипы</h2>
+                    </section>
+
+                    <section>
+                        <h3>Свойство __proto__</h3>
+                        <p>Если один объект имеет специальную ссылку __proto__ на другой объект, то при чтении свойства из него, если свойство отсутствует в самом объекте, оно ищется в объекте __proto__.</p>
+
+                    </section>
+                    <section>
+                            <pre><code class="javascript">
+var animal = {
+  eats: true
+};
+
+var rabbit = {
+  jumps: true
+};
+
+rabbit.__proto__ = animal;
+
+// в rabbit можно найти оба свойства
+console.log(rabbit);
+> Object {jumps: true}
+console.log(rabbit.eats);
+> true
+                            </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Прототип</h3>
+                        <p>Объект, на который указывает ссылка __proto__, называется «прототипом»</p>
+                        <p>Свойство __proto__ в старых версиях IE недоступно к модификации</p>
+                    </section>
+
+                    <section>
+                        <h3>For in</h3>
+                        <p>Перебирает все свойства объекта в том числе и прототипа</p>
+                            <pre><code class="javascript">
+var animal = {
+  eats: true
+};
+
+var rabbit = {
+  jumps: true,
+  __proto__: animal
+};
+
+for (var key in rabbit) {
+  // выводит и "eats" и "jumps"
+  console.log( key + " = " + rabbit[key] );
+}
+                            </code></pre>
+                    </section>
+
+                    <section>
+                        <h4 class="no-transform">Метод hasOwnProperty()</h4>
+                        <p>Object.prototype.hasOwnProperty() возвращает true, если свойство prop принадлежит самому объекту obj, иначе false.</p>
+                        <pre><code class="javascript">
+var animal = {
+  eats: true
+};
+
+var rabbit = {
+  jumps: true,
+  __proto__: animal
+};
+console.log( rabbit.hasOwnProperty('jumps') );
+// true: jumps принадлежит rabbit
+console.log( rabbit.hasOwnProperty('eats') );
+// false: eats не принадлежит
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4 class="no-transform">Object.create(null)</h4>
+                        <p>Простые объекты могут использоваться как коллекции ключ - значение</p>
+                        <pre><code class="javascript">
+var data = {};
+data.text = "11111";
+data.amount = 35;
+console.log(data.toString)
+//function toString() { [native code] }
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4 class="no-transform">Object.create(null)</h4>
+                        <p>Объект, создаваемый при помощи Object.create(null) не имеет прототипа, т.е. в нем нет лишних свойств</p>
+                        <pre><code class="javascript">
+var data = Object.create(null);
+data.text = "Привет";
+
+console.log(data.text); // Привет
+console.log(data.toString); // undefined
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4>delete</h4>
+                        <p>Удаляет свойство из объекта</p>
+                        <pre><code class="javascript">
+var data = Object.create(null);
+data.text = "11111";
+data.amount = 35;
+console.log(data.text); // 11111
+console.log(data.amount); // 35
+delete data.amount
+console.log(data.amount); // undefined
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4>Методы объекта</h4>
+                        <pre><code class="javascript">
+var obj = {};
+console.log(obj.toString());
+// "[object Object]"
+                        </code></pre>
+                        <pre class="fragment"><code class="javascript">
+( {}.__proto__.toString );
+// function toString
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4>Методы объекта</h4>
+                        <p>
+                            <ol>
+                                <li>Запись <code>obj = {}</code> является краткой формой <code>obj = new Object</code>, где <code>Object</code> – встроенная функция-конструктор для объектов.</li>
+                                <li>При выполнении <code>new Object</code>, создаваемому объекту ставится <code>__proto__</code> по <code>prototype</code> конструктора, который в данном случае равен встроенному <code>Object.prototype</code>.</li>
+                                <li>В дальнейшем при обращении к <code>obj.toString()</code> – функция будет взята из <code>Object.prototype</code>.</li>
+                            </ol>
+                        </p>
+                    </section>
+
+                    <section>
+                        <h4>Методы объекта</h4>
+                        <pre><code class="javascript">
+var obj = {};
+
+// метод прототипа?
+console.log( obj.toString == Object.prototype.toString );
+// true
+
+// __proto__ это Object.prototype?
+console.log( obj.__proto__ == Object.prototype );
+// true
+
+// А есть ли __proto__ у Object.prototype?
+console.log( obj.__proto__.__proto__ );
+// null, нет
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4>Установка прототипа</h4>
+                        <pre><code class="javascript">
+var animal = { eats: true };
+
+function Rabbit(name) {
+  this.name = name;
+  this.__proto__ = animal;
+}
+
+var rabbit = new Rabbit("Кроль");
+console.log( rabbit.eats );
+// true, из прототипа
+                        </code></pre>
+                        <p class="fragment">Установка свойства __proto__ не работает в IE</p>
+                    </section>
+
+                    <section>
+                        <h4>Установка прототипа</h4>
+                        <pre><code class="javascript">
+var animal = {
+  eats: true
+};
+
+function Rabbit(name) {
+  this.name = name;
+}
+
+Rabbit.prototype = animal;
+var rabbit = new Rabbit("Rabb");
+//  rabbit.__proto__ == animal
+console.log( rabbit.eats );
+// true
+                        </code></pre>
+                        <p class="fragment">При создании объекта через new, в его прототип __proto__ записывается ссылка из prototype функции-конструктора.</p>
+                    </section>
+
+                    <section>
+                        <h4 class="no-transform">Свойство constructor</h4>
+                        <pre><code class="javascript">
+function Rabbit() {}
+console.log( Rabbit.prototype.constructor );
+// function Rabbit() {}
+                        </code></pre>
+                        <div class="fragment">
+                            <p>У каждой функции по умолчанию уже есть свойство prototype. Оно содержит объект такого вида:</p>
+                            <pre><code class="javascript">
+function Rabbit() {}
+
+Rabbit.prototype = {
+  constructor: Rabbit
+};
+                            </code></pre>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h4 class="no-transform">Эмуляция Object.create для IE8-</h4>
+                        <p>Object.create(proto) можно эмулировать, при помощи prototype.</p>
+                        <pre><code class="javascript">
+function inherit(proto) {
+  function F() {}
+  F.prototype = proto;
+  var object = new F;
+  return object;
+}
+                        </code></pre>
+                        <div class="fragment">
+                            <pre><code class="javascript">
+var animal = {
+  eats: true
+};
+
+var rabbit = inherit(animal);
+
+alert( rabbit.eats ); // true
+                            </code></pre>
+                        </div>
+                    </section>
+
+                </section>
+
+
+                <section>
+                    <section>
+                        <h4 class="no-transform"><a href="https://developer.mozilla.org/en/javascript/reference/global_objects/array/prototype">Свойства и методы</a> prototype Array()</h4>
+                        <ul>
+                          <li>Свойство Array.prototype.length</li>
+                          <li>Метод Array.prototype.join()</li>
+                          <li>Метод Array.prototype.indexOf()</li>
+                          <li>Метод Array.prototype.map()</li>
+                          <li>Метод Array.prototype.forEach()</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h4 class="no-transform">Array.prototype.length</h4>
+                        <pre><code class="javascript">
+var myArray = [];
+myArray[50] = 'blue';
+console.log(myArray.length);
+
+console.log(myArray[25], myArray[50]);
+// => undefined, blue
+console.log(myArray); // => [50: "blue"]
+
+myArray.length = 5;
+console.log(myArray[25], myArray[50]);
+// => undefined, undefined
+console.log(myArray); // => []
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4 class="no-transform">Array.prototype.join()</h4>
+                        <pre><code class="javascript">
+var a = ['Wind', 'Rain', 'Fire'];
+var myVar2 = a.join(', ');
+// 'Wind, Rain, Fire'
+var myVar3 = a.join(' + ');
+// 'Wind + Rain + Fire'
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4 class="no-transform">Array.prototype.indexOf()</h4>
+                        <pre><code class="javascript">
+var a = ['Wind', 'Rain', 'Fire', 'Rain'];
+var myVar2 = a.indexOf('Rain');
+// => 1
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4 class="no-transform">Array.prototype.map()</h4>
+                        <pre><code class="javascript">
+var a = ['Wind', 'Rain', 'Fire'];
+var b = a.map(function(title) {
+  return "Hello, " + title;
+});
+// ["Hello, Wind", "Hello, Rain", "Hello, Fire"]
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4 class="no-transform">Array.prototype.forEach()</h4>
+                        <pre><code class="javascript">
+[2, 5, , 9].forEach(function (element, index, array) {
+  console.log('a[' + index + '] = ' + element);
+});
+// a[0] = 2
+// a[1] = 5
+// a[3] = 9
+
+// Обратите внимание на пропуск по индексу 2,
+// там нет элемента, поэтому он не посещается
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Прототипное наследование</h2>
+                    </section>
+
+                    <section>
+                        <h4>Создание объекта через конструктор</h4>
+                        <pre><code class="javascript small">
+// конструктор
+function Animal(name) {
+  this.name = name;
+  this.state = 'стоит';
+}
+// методы в прототипе
+Animal.prototype.showState = function() {
+  console.log( this.name + ' ' + this.state);
+};
+Animal.prototype.run = function() {
+  this.state = 'бежит';
+  this.showState();
+};
+Animal.prototype.stop = function() {
+  this.state = 'стоит';
+  this.showState();
+};
+var animal = new Animal('Зверь');
+console.log( animal.state );
+// стоит, свойство взято из прототипа
+animal.run();
+// Зверь бежит
+animal.stop();
+// Зверь стоит
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4 class="no-transform">Унаследуем Rabbit от Animal</h4>
+                        <pre><code class="javascript small">
+function Rabbit(name) {
+  this.name = name;
+  this.state = 'стоит';
+}
+
+Rabbit.prototype.jump = function() {
+  this.state = 'рыгает';
+  this.showState();
+};
+
+Rabbit.prototype.__proto__ = Animal.prototype;
+
+var rabbit = new Rabbit('Кроллык');
+                        </code></pre>
+                        <p class="fragment">Не будет работать в IE</p>
+                    </section>
+
+                    <section>
+                        <h4 class="no-transform">Унаследуем Rabbit от Animal</h4>
+                        <pre><code class="javascript small">
+function Rabbit(name) {
+  this.name = name;
+  this.state = 'стоит';
+}
+
+Rabbit.prototype.jump = function() {
+  this.state = 'рыгает';
+  this.showState();
+};
+
+Rabbit.prototype = Object.create(Animal.prototype);
+Rabbit.prototype.constructor = Rabbit;
+
+var rabbit = new Rabbit('Кроллык');
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4 class="no-transform">Оператор instanceof</h4>
+                        <p>Оператор instanceof позволяет проверить, какому классу принадлежит объект, с учетом прототипного наследования.</p>
+                        <pre><code class="javascript">
+var arr = [];
+console.log( arr instanceof Array ); // true
+console.log( arr instanceof Object ); // true
+
+function Rabbit() {}
+
+var rabbit = new Rabbit();
+
+console.log( rabbit instanceof Rabbit ); // true, верно
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4 class="no-transform">Упражнение Hamsters</h4>
+                        <a href="https://learn.javascript.ru/task/hamsters-with-proto">Hamsters</a>
+                    </section>
+                </section>
+
+                <section>
+                    <h3>Паттерны</h3>
+                </section>
+
+                <section>
+                    <h3>Домашнее задание</h3>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="../shared/lib/js/head.min.js"></script>
+        <script src="../shared/js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+
+                transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                { src: '../shared/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: '../shared/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '../shared/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '../shared/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: '../shared/plugin/zoom-js/zoom.js', async: true },
+                { src: '../shared/plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+
+    </body>
+    </html>
