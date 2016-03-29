@@ -563,6 +563,28 @@ Rabbit.prototype = Object.create(Animal.prototype);
 Rabbit.prototype.constructor = Rabbit;
 
 var rabbit = new Rabbit('Кроллык');
+rabbit.jump();
+                        </code></pre>
+                        <p class="fragment">Не работает</p>
+                    </section>
+
+                    <section>
+                        <h4 class="no-transform">Унаследуем Rabbit от Animal</h4>
+                        <pre><code class="javascript small">
+function Rabbit(name) {
+  this.name = name;
+  this.state = 'стоит';
+}
+
+Rabbit.prototype = Object.create(Animal.prototype);
+Rabbit.prototype.constructor = Rabbit;
+
+Rabbit.prototype.jump = function() {
+  this.state = 'рыгает';
+  this.showState();
+};
+
+var rabbit = new Rabbit('Кроллык');
                         </code></pre>
                     </section>
 
